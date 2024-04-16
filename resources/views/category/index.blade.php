@@ -3,23 +3,31 @@
 @endif
 <h1>Hello Category</h1>
 <div class="container">
-    <div class="row">
-        <table class="table-boardered table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-            @foreach ($categories as $category)
+    <div class="table-responsive"> <!-- Add this div for responsiveness -->
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{ $category->updated_at }}</td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Created At</th>
+                    <th>Action</th>
                 </tr>
-            @endforeach
+            </thead>
+            <tbody>
+                @foreach ($categories as $category)
+                    <tr>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->description }}</td>
+                        <td>{{ $category->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <a href="{{ url('categories'.$item->id.'/edit'}}">edit</a>
+                            <a href="{{ url('destroy'.$item->id.'/destroy'}}">delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
