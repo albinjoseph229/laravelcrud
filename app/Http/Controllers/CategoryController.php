@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function indexa(){
-        return view('category.index');
+    public function index(){
+        $categories = Category::get();
+        return view('category.index',compact('categories'));
     }
     public function create(){
+
         return view('category.create');
     }
     public function store(Request $request){

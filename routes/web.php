@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/categories',[CategoryController::class, 'indexa']);
+Route::get('/categories',[CategoryController::class, 'index'])->name('categories');
 
-Route::get('/create',[CategoryController::class, 'create']);
+Route::get('/create',[CategoryController::class, 'create'])->name('create');
 
 Route::post('/create',[CategoryController::class, 'store']);
