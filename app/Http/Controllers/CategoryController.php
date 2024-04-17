@@ -31,4 +31,22 @@ class CategoryController extends Controller
         $category=Category::findOrFail($id);
         return view('category.edit',compact('category'));
     }
+    public function update(Request $request,int $id){
+        $request->validate([
+            'name'=>['required','min:5'],
+            'description'=>'required','string',
+        ]);
+
+        $category=Category::findOrFail($id);
+        $category->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+        ]);
+        return redirect('/categories')->with('status','category-updated');
+    }
+    public function destroy(int $id){
+        $category=Category::findOrFail($id);
+        $category->delete();
+        return redirect('/categories')->with('status','category-deleted');
+    }
 }
