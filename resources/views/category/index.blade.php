@@ -22,7 +22,7 @@
                         <td>{{ $category->description }}</td>
                         <td>{{ $category->created_at->format('Y-m-d') }}</td>
                         <td>
-                            <a href="{{ url('categories'.$category->id.'/edit')}}">edit</a>
+                            <a href="{{ url('categories/' . $category->id . '/edit') }}">edit</a>
                             <a href="{{ url('destroy'.$category->id.'/destroy')}}">delete</a>
                         </td>
                     </tr>
