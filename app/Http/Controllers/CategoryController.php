@@ -27,4 +27,8 @@ class CategoryController extends Controller
         ]);
         return redirect('/create')->with('status','category-created');
     }
+    public function edit(int $id){
+        $category=Category::findOrFail($id);
+        return $category;
+    }
 }
